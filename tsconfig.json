@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "outDir": "./ts_build/",
+    "noImplicitAny": true,
+    "moduleResolution": "Node",
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "module": "esnext",
+    "target": "es6",
+    "lib": [
+      "ES6",
+      "ES2021",
+      "ES2022"
+    ],
+    "paths": {
+      "*": [
+        "./.yalc/*"
+      ]
+    },
+    "allowJs": true
+  },
+  "include": [
+    "./scripts/tendrock"
+  ],
+  "exclude": [
+    "./rubbish"
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "name": "tendrock",
+  "version": "0.1.0-alpha",
+  "description": "",
+  "homepage": ".",
+  "private": true,
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "just-scripts test",
+    "build-scripts": "just-scripts build-scripts",
+    "deploy-scripts": "just-scripts deploy-scripts",
+    "clean": "just-scripts clean",
+    "dev": "just-scripts dev",
+    "dev-no-scripts": "just-scripts dev-no-scripts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "LGPL-3.0-or-later",
+  "devDependencies": {
+    "@babel/core": "^7.17.10",
+    "@babel/plugin-transform-runtime": "^7.17.10",
+    "@babel/preset-env": "^7.17.10",
+    "@minecraft/server": "^1.17.0-beta.1.21.50-stable",
+    "@minecraft/server-ui": "^1.4.0-beta.1.21.51-stable",
+    "@minecraft/vanilla-data": "^1.21.50",
+    "@types/node": "^22.10.5",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.2.5",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "dotenv": "^16.4.7",
+    "just-scripts": "^2.3.3",
+    "lodash": "^4.17.21",
+    "terser-webpack-plugin": "^5.3.1",
+    "ts-loader": "^9.3.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.3",
+    "uglify-js": "^3.15.5",
+    "webpack": "5.94.0",
+    "webpack-cli": "^4.9.2"
+  }
+}

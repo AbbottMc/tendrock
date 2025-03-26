@@ -1,0 +1,47 @@
+{
+  "format_version": 2,
+  "header": {
+    "description": "pack.description",
+    "name": "pack.name",
+    "uuid": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "version": [0, 1, 0],
+    "min_engine_version": [1, 21, 50]
+  },
+  "modules": [
+    {
+      "description": "Behavior Pack Module",
+      "type": "data",
+      "uuid": "d1e2f3a4-b5c6-4d7e-8f9a-0b1c2d3e4f5a",
+      "version": [0, 1, 0]
+    },
+    {
+      "description": "Script API Module Dev",
+      "type": "script",
+      "language": "javascript",
+      "uuid": "6ba7b810-9dad-11d1-80b4-00c04fd430c8",
+      "version": [0, 1, 0],
+      "entry": "scripts/Main.js"
+    }
+  ],
+  "dependencies": [
+    {
+      "version": [0, 1, 0],
+      "uuid": "3e8c9e8f-8a6e-4f5a-9e8a-1f8b9c0d1e2f"
+    },
+    {
+      "module_name": "@minecraft/server",
+      "version": "1.17.0-beta"
+    },
+    {
+      "module_name": "@minecraft/server-ui",
+      "version": "1.4.0-beta"
+    }
+  ],
+  // to use eval() and Function()
+  "capabilities": [ "script_eval" ],
+  "metadata": {
+    "authors": [
+      "乾山瑶"
+    ]
+  }
+} 

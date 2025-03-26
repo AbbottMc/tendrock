@@ -1,0 +1,13 @@
+/.idea/
+/build/
+/.run/
+/bev_intl/scripts/build/
+/bev_intl/scripts/node_modules/
+/scripts/node_modules/
+/scripts/build/
+/yalc.lock
+/scripts/.yalc/
+/behavior_packs/ic2[BP]/dev/node_modules/
+/dev/.yalc/
+/.yalc/
+/node_modules/

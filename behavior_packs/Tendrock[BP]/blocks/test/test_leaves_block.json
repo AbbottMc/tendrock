@@ -1,0 +1,43 @@
+{
+  "format_version": "1.21.50",
+  "minecraft:block": {
+    "description": {
+      "identifier": "tendrock:test_leaves",
+      "states": {
+        "tendrock:distance": [1, 2, 3, 4, 5, 6, 7],
+        "tendrock:persistent": [false, true]
+      },
+      "menu_category": {
+        "category": "nature",
+        "group": "itemGroup.name.leaves"
+      }
+    },
+    "components": {
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 0.2
+      },
+      "minecraft:destructible_by_explosion": {
+        "explosion_resistance": 0.5
+      },
+      "minecraft:light_dampening": 8,
+//      "minecraft:loot": "loot_tables/plant/rubber_leaves.json",
+      "minecraft:flammable": {
+        "destroy_chance_modifier": 60,
+        "catch_chance_modifier": 30
+      },
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "birch_leaves",
+          "render_method": "alpha_test"
+        }
+      },
+      "minecraft:geometry": "minecraft:geometry.full_block",
+      "minecraft:custom_components": ["tendrock:leaves_block"],
+      "minecraft:tick": {
+        "looping": true,
+        "interval_range": [1, 1]
+      },
+      "tag:minecraft:leaves": {}
+    }
+  }
+}
