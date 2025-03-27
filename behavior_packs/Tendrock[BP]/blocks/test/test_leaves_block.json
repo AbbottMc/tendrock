@@ -20,7 +20,7 @@
         "explosion_resistance": 0.5
       },
       "minecraft:light_dampening": 8,
-//      "minecraft:loot": "loot_tables/plant/rubber_leaves.json",
+      "minecraft:loot": "loot_tables/tendrock/leaves/test.json",
       "minecraft:flammable": {
         "destroy_chance_modifier": 60,
         "catch_chance_modifier": 30
