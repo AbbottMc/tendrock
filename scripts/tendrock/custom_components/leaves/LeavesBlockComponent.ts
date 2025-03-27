@@ -100,12 +100,10 @@ export class LeavesBlockComponent implements BlockCustomComponent {
 
   public static updateDistanceFromLogs(block: Block) {
     let i = this.MaxDistance;
-    let neighborLocation: Vector3 = {x: 0, y: 0, z: 0};
     let neighborBlock: Block;
     for (const direction of DirectionUtils.allDirections) {
-      neighborLocation = block[DirectionUtils.getDirectionMethodName(direction)]();
-      neighborBlock = block.dimension.getBlock(neighborLocation);
-      if (!neighborBlock.isValid()) {
+      neighborBlock = block[DirectionUtils.getDirectionMethodName(direction)]();
+      if (!neighborBlock?.isValid()) {
         continue;
       }
       i = Math.min(i, LeavesBlockComponent.getDistanceFromLog(neighborBlock.permutation) + 1);
