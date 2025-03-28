@@ -1,6 +1,6 @@
 import {
   Block, BlockComponentPlayerPlaceBeforeEvent, BlockComponentRandomTickEvent, BlockComponentTickEvent,
-  BlockCustomComponent, BlockPermutation, Dimension, system, Vector3, world
+  BlockCustomComponent, BlockPermutation, Dimension, system, world
 } from "@minecraft/server";
 import {BindThis} from "../../lib/decorator/BindThis";
 import {StateUtils} from "../../lib/util/StateUtils";
@@ -9,7 +9,7 @@ import {DirectionUtils} from "../../lib/util/DirectionUtils";
 import {VanillaItemTags} from "../../lib/ref/VanillaItemTags";
 import {MinecraftBlockTypes} from "@minecraft/vanilla-data";
 import {Identifier} from "../../lib/Identifier";
-import {weather} from "../../lib/world/Weather";
+import {Weather} from "../../lib/world/Weather";
 import {LocationUtils} from "../../lib/util/LocationUtils";
 
 export class LeavesBlockComponent implements BlockCustomComponent {
@@ -55,7 +55,7 @@ export class LeavesBlockComponent implements BlockCustomComponent {
   }
 
   private spawnParticleWhenItRains(block: Block, dimension: Dimension) {
-    if (!weather.isRaining()) {
+    if (!Weather.isRaining(dimension)) {
       return;
     }
     if (Math.floor(Math.random() * 15) !== 1) {
@@ -103,7 +103,7 @@ export class LeavesBlockComponent implements BlockCustomComponent {
     let neighborBlock: Block;
     for (const direction of DirectionUtils.allDirections) {
       neighborBlock = block[DirectionUtils.getDirectionMethodName(direction)]();
-      if (!neighborBlock?.isValid()) {
+      if (!neighborBlock?.isValid) {
         continue;
       }
       i = Math.min(i, LeavesBlockComponent.getDistanceFromLog(neighborBlock.permutation) + 1);

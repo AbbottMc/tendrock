@@ -1,41 +1,21 @@
-import {WeatherType, world} from "@minecraft/server";
+import {Dimension, WeatherType} from "@minecraft/server";
 
 
 export class Weather {
-  private currentWeather: WeatherType;
-  private static PropertyKey = "tendrock:weather";
 
-  constructor() {
-    this.initCurrentWeather();
-    world.afterEvents.weatherChange.subscribe(({newWeather}) => {
-      // console.log(`Weather changed to ${newWeather}`);
-      this.currentWeather = newWeather;
-      world.setDynamicProperty(Weather.PropertyKey, newWeather);
-    });
+  public static isRaining(dimension: Dimension) {
+    const currentWeather = dimension.getWeather();
+    return currentWeather === WeatherType.Rain || currentWeather === WeatherType.Thunder;
   }
 
-  private initCurrentWeather() {
-    const savedWeather = world.getDynamicProperty(Weather.PropertyKey);
-    this.currentWeather = savedWeather as WeatherType ?? WeatherType.Clear;
+  public static isThunder(dimension: Dimension) {
+    const currentWeather = dimension.getWeather();
+    return currentWeather === WeatherType.Thunder;
   }
 
-  public isRaining() {
-    return this.currentWeather === WeatherType.Rain || this.currentWeather === WeatherType.Thunder;
-  }
-
-  public isThunder() {
-    return this.currentWeather === WeatherType.Thunder;
-  }
-
-  public isClear() {
-    return this.currentWeather === WeatherType.Clear;
-  }
-
-  public getCurrent() {
-    return this.currentWeather;
+  public static isClear(dimension: Dimension) {
+    const currentWeather = dimension.getWeather();
+    return currentWeather === WeatherType.Clear;
   }
 }
-
-export const weather = new Weather();
-
 
