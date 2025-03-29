@@ -11,6 +11,7 @@ import {MinecraftBlockTypes} from "@minecraft/vanilla-data";
 import {Identifier} from "../../lib/Identifier";
 import {Weather} from "../../lib/world/Weather";
 import {LocationUtils} from "../../lib/util/LocationUtils";
+import {VanillaBlockTags} from "../../lib/ref/VanillaBlockTags";
 
 export class LeavesBlockComponent implements BlockCustomComponent {
 
@@ -114,6 +115,9 @@ export class LeavesBlockComponent implements BlockCustomComponent {
   }
 
   private static getDistanceFromLog(permutation: BlockPermutation) {
+    if (permutation.hasTag(VanillaBlockTags.Logs)) {
+      return 0;
+    }
     const itemStack = permutation.getItemStack();
     if (!itemStack) return this.MaxDistance;
     if (itemStack.hasTag(VanillaItemTags.Logs)) {
