@@ -1,6 +1,6 @@
 {
   "name": "@tendrock/core",
-  "version": "0.1.0-alpha",
+  "version": "0.1.0-alpha.1",
   "main": "dist/index.js",
   "description": "The core package of the Tendrock system for Minecraft Bedrock Script API",
   "scripts": {

@@ -1,1 +1,1 @@
-export * from './Registries';
+export * from './ItemRegistries';

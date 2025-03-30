@@ -1,0 +1,1 @@
+{"version":3,"file":"ItemRegistries.js","sourceRoot":"","sources":["../../registry/ItemRegistries.ts"],"names":[],"mappings":"AAAA,OAAO,EAAC,cAAc,EAAC,MAAM,kBAAkB,CAAC;AAGhD,MAAM,OAAO,cAAc;IAGzB,YAAsB,GAAU;QAC9B,IAAI,CAAC,MAAM,GAAG,cAAc,CAAC,MAAM,CAAC,GAAG,CAAC,CAAC;IAC3C,CAAC;IAEM,MAAM,CAAC,MAAM,CAAC,GAAU;QAC7B,OAAO,IAAI,cAAc,CAAC,GAAG,CAAC,CAAC;IACjC,CAAC;CACF"}

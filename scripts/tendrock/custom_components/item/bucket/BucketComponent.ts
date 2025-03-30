@@ -5,12 +5,10 @@ import {
 import {Tendrock} from "../../../Tendrock";
 import {BucketRegisterConfig} from "../../../../tendrock-core/registry/BucketRegistry";
 import {bindThis} from "../../../lib/decorator/BindThis";
-import {TendrockVector3} from "../../../../tendrock-lib/vector/TendrockVector3";
-import {PlayerUtils} from "../../../../tendrock-lib/util/entity/PlayerUtils";
-import {EntityUtils} from "../../../../tendrock-lib/util/entity/EntityUtils";
+import {TendrockVector3} from "../../../../tendrock-lib/vector";
+import {DirectionUtils, EntityUtils, PlayerUtils} from "../../../../tendrock-lib/util";
 import {MinecraftBlockTypes} from "@minecraft/vanilla-data";
-import {DirectionUtils} from "../../../../tendrock-lib/util/DirectionUtils";
-import {serverWorld} from "../../../../tendrock-lib/server/ServerWorld";
+import {serverWorld} from "../../../../tendrock-lib/server";
 import {SetMap} from "../../../../tendrock-lib/data/SetMap";
 
 
