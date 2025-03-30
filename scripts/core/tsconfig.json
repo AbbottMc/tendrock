@@ -1,0 +1,15 @@
+{
+  "extends": "../tsconfig.tendrock.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "rootDir": "../",
+    "declarationDir": "types/generated"
+  },
+  "include": [
+    "./**/*",
+    "../common/**/*"
+  ],
+  "exclude": [
+    "backup", "dist", "package.json", "tsconfig.json", "types"
+  ]
+}

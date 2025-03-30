@@ -1,0 +1,30 @@
+{
+  "name": "@tendrock/core",
+  "version": "0.1.0-alpha.3",
+  "main": "dist/core/index.js",
+  "description": "The core package of the Tendrock system for Minecraft Bedrock Script API",
+  "scripts": {
+    "tsc-core": "tsc",
+    "publish-alpha": "npm publish --access public --tag alpha"
+  },
+  "files": [
+    "dist",
+    "types/generated",
+    "tsconfig.json",
+    "!**/*.test.*",
+    "!**/test/**"
+  ],
+  "keywords": [
+    "Minecraft",
+    "Bedrock",
+    "Addon",
+    "Script API",
+    "Tendrock"
+  ],
+  "types": "types/generated",
+  "author": "QianShanyao",
+  "license": "MIT",
+  "dependencies": {
+    "@tendrock/ipc": "^0.2.0-alpha.3"
+  }
+}
