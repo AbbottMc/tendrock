@@ -3,7 +3,7 @@ import {
   LiquidType, world
 } from "@minecraft/server";
 import {Tendrock} from "../../../Tendrock";
-import {BucketRegisterEvent} from "../../../../tendrock-server/registry/BucketRegistry";
+import {BucketRegisterConfig} from "../../../../tendrock-core/registry/BucketRegistry";
 import {bindThis} from "../../../lib/decorator/BindThis";
 import {TendrockVector3} from "../../../../tendrock-lib/vector/TendrockVector3";
 import {PlayerUtils} from "../../../../tendrock-lib/util/entity/PlayerUtils";
@@ -16,14 +16,8 @@ import {SetMap} from "../../../../tendrock-lib/data/SetMap";
 
 export class BucketComponent implements ItemCustomComponent {
   constructor() {
-    Tendrock.Ipc.handle('tendrock:register_bucket', (event: BucketRegisterEvent) => {
-      this.fullBucketToEmptyMap.set(event.config.fullBucketId, event.config.emptyBucketId);
-      this.fullBucketToFluidMap.set(event.config.fullBucketId, event.config.flowingLiquidBlockId);
-      this.fullBucketEmptySoundIdMap.set(event.config.fullBucketId, event.config.emptySoundId);
-      this.emptyBucketFillSoundIdMap.set(event.config.fullBucketId, event.config.fillSoundId);
-      this.emptyBucketToFluidMap.push(event.config.emptyBucketId, event.config.liquidBlockId);
-      this.addToMapEle(this.emptyBucketToFullMap, event.config.emptyBucketId, event.config.liquidBlockId, event.config.fullBucketId);
-      this.addToMapEle(this.emptyBucketToFullMap, event.config.emptyBucketId, event.config.flowingLiquidBlockId, event.config.fullBucketId);
+    Tendrock.Ipc.on('tendrock:register_bucket', (event) => {
+      this.register(event.value as BucketRegisterConfig);
     });
   }
 
@@ -58,6 +52,16 @@ export class BucketComponent implements ItemCustomComponent {
       iBlock.setType(MinecraftBlockTypes.Air);
       break;
     }
+  }
+
+  public register(config: BucketRegisterConfig) {
+    this.fullBucketToEmptyMap.set(config.fullBucketId, config.emptyBucketId);
+    this.fullBucketToFluidMap.set(config.fullBucketId, config.flowingLiquidBlockId);
+    this.fullBucketEmptySoundIdMap.set(config.fullBucketId, config.emptySoundId);
+    this.emptyBucketFillSoundIdMap.set(config.fullBucketId, config.fillSoundId);
+    this.emptyBucketToFluidMap.push(config.emptyBucketId, config.liquidBlockId);
+    this.addToMapEle(this.emptyBucketToFullMap, config.emptyBucketId, config.liquidBlockId, config.fullBucketId);
+    this.addToMapEle(this.emptyBucketToFullMap, config.emptyBucketId, config.flowingLiquidBlockId, config.fullBucketId);
   }
 
   @bindThis

@@ -15,9 +15,16 @@
     "dev": "just-scripts dev",
     "dev-no-scripts": "just-scripts dev-no-scripts"
   },
-  "keywords": [],
-  "author": "",
-  "license": "LGPL-3.0-or-later",
+  "keywords": [
+    "Minecraft",
+    "Bedrock",
+    "Addon",
+    "Script API",
+    "Lib",
+    "Tendrock"
+  ],
+  "author": "QianShanyao",
+  "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.17.10",
     "@babel/plugin-transform-runtime": "^7.17.10",

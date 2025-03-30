@@ -1,7 +1,7 @@
 import {Block, Direction} from "@minecraft/server";
 import {StateUtils} from "../util/StateUtils";
 import {DirectionUtils} from "../util/DirectionUtils";
-import {LoopOperator} from "../enum/LoopOperator";
+import {LoopOperator} from "../enum";
 
 export class ServerWorld {
   public setState<T extends (number | string | boolean)>(block: Block, stateName: string, state: T): void {
