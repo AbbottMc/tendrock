@@ -1,4 +1,4 @@
-export function BindThis(target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+export function bindThis(target: any, propertyKey: string, descriptor: PropertyDescriptor) {
   const originalMethod = descriptor.value;
   const adjustedDescriptor: PropertyDescriptor = {
     configurable: true,

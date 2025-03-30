@@ -1,0 +1,30 @@
+{
+  "name": "@tendrock/lib",
+  "version": "0.1.0-alpha",
+  "description": "A lib under the Tendrock system for Minecraft Bedrock Script API",
+  "scripts": {
+    "tsc": "tsc",
+    "publish-alpha": "npm publish --access public --tag alpha"
+  },
+  "files": [
+    "dist",
+    "types/generated",
+    "tsconfig.json",
+    "!**/*.test.*",
+    "!**/test/**"
+  ],
+  "keywords": [
+    "Minecraft",
+    "Bedrock",
+    "Addon",
+    "Script API",
+    "Lib",
+    "Tendrock"
+  ],
+  "types": "types/generated",
+  "author": "QianShanyao",
+  "license": "MIT",
+  "dependencies": {
+    "@tendrock/ipc": "^0.2.0-alpha.3"
+  }
+}

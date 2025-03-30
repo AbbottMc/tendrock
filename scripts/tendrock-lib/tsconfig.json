@@ -1,29 +1,25 @@
 {
   "compilerOptions": {
-    "outDir": "./ts_build/",
     "noImplicitAny": true,
     "moduleResolution": "Node",
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
     "module": "esnext",
     "target": "es6",
+    "outDir": "dist",
+    "sourceMap": true,
+    "declaration": true,
+    "incremental": false,
+    "declarationDir": "types/generated",
     "lib": [
-      "ES6",
-      "ES2021",
-      "ES2022"
+      "ES6", "ES2021", "ES2022"
     ],
-    "paths": {
-      "*": [
-        "./.yalc/*"
-      ]
-    },
     "allowJs": true
   },
   "include": [
-    "./scripts"
+    "./"
   ],
   "exclude": [
-    "./rubbish",
-    "./scripts/tendrock-lib/types"
+    "./backup", "dist", "package.json", "tsconfig.json", "types"
   ]
 }

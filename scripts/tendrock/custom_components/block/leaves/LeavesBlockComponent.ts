@@ -2,35 +2,35 @@ import {
   Block, BlockComponentPlayerPlaceBeforeEvent, BlockComponentRandomTickEvent, BlockComponentTickEvent,
   BlockCustomComponent, BlockPermutation, Dimension, system, world
 } from "@minecraft/server";
-import {BindThis} from "../../lib/decorator/BindThis";
-import {StateUtils} from "../../lib/util/StateUtils";
+import {bindThis} from "../../../lib/decorator/BindThis";
+import {StateUtils} from "../../../../tendrock-lib/util/StateUtils";
 import {LeavesStates} from "./ref/LeavesStates";
-import {DirectionUtils} from "../../lib/util/DirectionUtils";
-import {VanillaItemTags} from "../../lib/ref/VanillaItemTags";
+import {DirectionUtils} from "../../../../tendrock-lib/util/DirectionUtils";
+import {VanillaItemTags} from "../../../lib/ref/VanillaItemTags";
 import {MinecraftBlockTypes} from "@minecraft/vanilla-data";
-import {Identifier} from "../../lib/Identifier";
-import {Weather} from "../../lib/world/Weather";
-import {LocationUtils} from "../../lib/util/LocationUtils";
-import {VanillaBlockTags} from "../../lib/ref/VanillaBlockTags";
+import {Identifier} from "../../../lib/Identifier";
+import {Weather} from "../../../lib/world/Weather";
+import {LocationUtils} from "../../../lib/util/LocationUtils";
+import {VanillaBlockTags} from "../../../lib/ref/VanillaBlockTags";
 
 export class LeavesBlockComponent implements BlockCustomComponent {
 
   private static MaxDistance = 7;
 
-  @BindThis
+  @bindThis
   beforeOnPlayerPlace(event: BlockComponentPlayerPlaceBeforeEvent) {
     // Set the persistent state to true if the leaves is player placed;
-    event.permutationToPlace = StateUtils.setState(event.permutationToPlace, LeavesStates.Persistent, true);
+    event.permutationToPlace = StateUtils.withState(event.permutationToPlace, LeavesStates.Persistent, true);
   }
 
-  @BindThis
+  @bindThis
   onRandomTick(event: BlockComponentRandomTickEvent) {
     const {block, dimension} = event;
     this.executeDecay(block, dimension);
     this.spawnParticleWhenItRains(event.block, event.dimension);
   }
 
-  @BindThis
+  @bindThis
   onTick(event: BlockComponentTickEvent) {
     // Performance improvement
     // Low down the frequency of the log distance checking
@@ -111,7 +111,7 @@ export class LeavesBlockComponent implements BlockCustomComponent {
       if (i == 1) break;
     }
     if (block.isAir) return block.permutation;
-    return StateUtils.setState(block.permutation, LeavesStates.Distance, i);
+    return StateUtils.withState(block.permutation, LeavesStates.Distance, i);
   }
 
   private static getDistanceFromLog(permutation: BlockPermutation) {

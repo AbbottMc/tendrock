@@ -1,4 +1,4 @@
-import {Tendrock} from "../Tendrock";
+import {Tendrock} from "../../Tendrock";
 
 export class IdRefs {
   protected static get(id: string) {

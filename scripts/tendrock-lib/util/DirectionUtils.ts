@@ -6,7 +6,7 @@ export class DirectionUtils {
   static readonly allDirections = [Direction.Up, Direction.Down, Direction.North, Direction.South, Direction.West, Direction.East];
   static readonly allBlockDirectionMethodNames = ['above', 'below', 'east', 'west', 'south', 'north'];
 
-  static getOppositeDirection(direction: Direction): Direction {
+  static reverse(direction: Direction): Direction {
     switch (direction) {
       case Direction.Up:
         return Direction.Down;
