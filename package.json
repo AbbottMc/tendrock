@@ -31,7 +31,7 @@
     "@babel/preset-env": "^7.17.10",
     "@minecraft/server": "^2.0.0-beta.1.21.70-stable",
     "@minecraft/server-ui": "^2.0.0-beta.1.21.70-stable",
-    "@minecraft/vanilla-data": "^1.21.50",
+    "@minecraft/vanilla-data": "^1.21.70",
     "@types/node": "^22.10.5",
     "babel-core": "^6.26.3",
     "babel-loader": "^8.2.5",
