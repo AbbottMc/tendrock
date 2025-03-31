@@ -1,0 +1,30 @@
+{
+  "format_version": "1.21.50",
+  "minecraft:block": {
+    "description": {
+      "identifier": "tendrock:deepslate_test_ore",
+      "menu_category": {
+        "category": "nature",
+        "group": "itemGroup.name.ore"
+      }
+    },
+    "components": {
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 3.8
+      },
+      "minecraft:destructible_by_explosion": {
+        "explosion_resistance": 4.0
+      },
+      "minecraft:loot": "loot_tables/tendrock/empty.json",
+      "minecraft:geometry": "minecraft:geometry.full_block",
+      "minecraft:custom_components": ["tendrock:deepslate_ore"],
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "deepslate_coal_ore"
+        }
+      },
+      "tag:minecraft:is_pickaxe_item_destructible": {},
+      "tag:minecraft:stone_tier_destructible": {}
+    }
+  }
+}

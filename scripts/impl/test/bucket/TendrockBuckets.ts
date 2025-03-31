@@ -1,7 +1,7 @@
-import {CustomItemComponents} from "../../custom_components/item/CustomItemComponents";
 import {MinecraftBlockTypes} from "@minecraft/vanilla-data";
+import {BucketComponent} from "../../custom_components/item/bucket/BucketComponent";
 
-CustomItemComponents.Bucket.register({
+BucketComponent.Instance.config({
   emptyBucketId: 'tendrock:empty_bucket',
   fullBucketId: 'tendrock:water_bucket',
   emptySoundId: 'bucket.empty_water',
@@ -10,7 +10,7 @@ CustomItemComponents.Bucket.register({
   liquidBlockId: MinecraftBlockTypes.Water
 });
 
-CustomItemComponents.Bucket.register({
+BucketComponent.Instance.config({
   emptyBucketId: 'tendrock:empty_bucket',
   fullBucketId: 'tendrock:lava_bucket',
   emptySoundId: 'bucket.empty_lava',

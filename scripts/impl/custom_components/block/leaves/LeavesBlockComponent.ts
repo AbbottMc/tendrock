@@ -3,17 +3,17 @@ import {
   BlockCustomComponent, BlockPermutation, Dimension, system, world
 } from "@minecraft/server";
 import {bindThis} from "../../../lib/decorator/BindThis";
-import {DirectionUtils, LoopOperator, serverWorld, StateUtils} from "@tendrock/lib";
+import {BlockUtils, DirectionUtils, LoopOperator, serverWorld, StateUtils} from "@tendrock/lib";
 import {LeavesStates} from "./ref/LeavesStates";
-import {VanillaItemTags} from "../../../lib/ref/VanillaItemTags";
 import {MinecraftBlockTypes} from "@minecraft/vanilla-data";
 import {Weather} from "../../../lib/world/Weather";
 import {LocationUtils} from "../../../lib/util/LocationUtils";
-import {VanillaBlockTags} from "../../../lib/ref/VanillaBlockTags";
 import {Tendrock} from "../../../../common/Tendrock";
-import {LeavesRegisterConfig} from "../../../../core/registry/LeavesRegistry";
+import {LeavesConfigure} from "../../../../core/config/block/LeavesConfigurator";
 
 export class LeavesBlockComponent implements BlockCustomComponent {
+  public static Id = 'tendrock:leaves_block';
+  public static Instance = new LeavesBlockComponent();
 
   private static MaxDistance = 7;
 
@@ -21,7 +21,7 @@ export class LeavesBlockComponent implements BlockCustomComponent {
 
   constructor() {
     Tendrock.Ipc.on('tendrock:register_leaves', (event) => {
-      const config = event.value as LeavesRegisterConfig;
+      const config = event.value as LeavesConfigure;
       this.lootTableMap.set(config.typeId, config.lootTable);
     });
   }
@@ -126,12 +126,7 @@ export class LeavesBlockComponent implements BlockCustomComponent {
   }
 
   private static getDistanceFromLog(permutation: BlockPermutation) {
-    if (permutation.hasTag(VanillaBlockTags.Logs)) {
-      return 0;
-    }
-    const itemStack = permutation.getItemStack();
-    if (!itemStack) return this.MaxDistance;
-    if (itemStack.hasTag(VanillaItemTags.Logs)) {
+    if (BlockUtils.isLog(permutation)) {
       return 0;
     }
     if (StateUtils.hasState(permutation, LeavesStates.Distance)) {

@@ -1,1 +1,0 @@
-{"version":3,"file":"BlockRegistries.js","sourceRoot":"","sources":["../../../registry/BlockRegistries.ts"],"names":[],"mappings":"AAAA,OAAO,EAAC,cAAc,EAAC,MAAM,kBAAkB,CAAC;AAGhD,MAAM,OAAO,eAAe;IAG1B,YAAsB,GAAU;QAC9B,IAAI,CAAC,MAAM,GAAG,cAAc,CAAC,MAAM,CAAC,GAAG,CAAC,CAAC;IAC3C,CAAC;IAEM,MAAM,CAAC,MAAM,CAAC,GAAU;QAC7B,OAAO,IAAI,eAAe,CAAC,GAAG,CAAC,CAAC;IAClC,CAAC;CACF"}

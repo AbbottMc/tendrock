@@ -3,18 +3,21 @@ import {
   LiquidType, world
 } from "@minecraft/server";
 import {Tendrock} from "../../../../common/Tendrock";
-import {BucketRegisterConfig} from "../../../../core/registry/BucketRegistry";
+import {BucketConfig} from "../../../../core/config/item/BucketConfigurator";
 import {bindThis} from "../../../lib/decorator/BindThis";
 import {MinecraftBlockTypes} from "@minecraft/vanilla-data";
-import {AbstractBucketRegistry} from "../../../../common/custom_components/AbstractBucketRegistry";
+import {AbstractBucketConfigurator} from "../../../../common/custom_components/AbstractBucketConfigurator";
 import {DirectionUtils, EntityUtils, PlayerUtils, serverWorld, TendrockVector3} from "@tendrock/lib";
 
 
-export class BucketComponent extends AbstractBucketRegistry implements ItemCustomComponent {
+export class BucketComponent extends AbstractBucketConfigurator implements ItemCustomComponent {
+  public static Id = 'tendrock:bucket';
+  public static Instance = new BucketComponent();
+
   constructor() {
     super();
     Tendrock.Ipc.on('tendrock:register_bucket', (event) => {
-      this.register(event.value as BucketRegisterConfig);
+      this.config(event.value as BucketConfig);
     });
   }
 
