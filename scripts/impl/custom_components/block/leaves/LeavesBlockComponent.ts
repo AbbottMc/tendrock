@@ -7,14 +7,24 @@ import {DirectionUtils, LoopOperator, serverWorld, StateUtils} from "@tendrock/l
 import {LeavesStates} from "./ref/LeavesStates";
 import {VanillaItemTags} from "../../../lib/ref/VanillaItemTags";
 import {MinecraftBlockTypes} from "@minecraft/vanilla-data";
-import {Identifier} from "../../../lib/Identifier";
 import {Weather} from "../../../lib/world/Weather";
 import {LocationUtils} from "../../../lib/util/LocationUtils";
 import {VanillaBlockTags} from "../../../lib/ref/VanillaBlockTags";
+import {Tendrock} from "../../../../common/Tendrock";
+import {LeavesRegisterConfig} from "../../../../core/registry/LeavesRegistry";
 
 export class LeavesBlockComponent implements BlockCustomComponent {
 
   private static MaxDistance = 7;
+
+  private lootTableMap = new Map<string, string>();
+
+  constructor() {
+    Tendrock.Ipc.on('tendrock:register_leaves', (event) => {
+      const config = event.value as LeavesRegisterConfig;
+      this.lootTableMap.set(config.typeId, config.lootTable);
+    });
+  }
 
   @bindThis
   beforeOnPlayerPlace(event: BlockComponentPlayerPlaceBeforeEvent) {
@@ -72,7 +82,10 @@ export class LeavesBlockComponent implements BlockCustomComponent {
   }
 
   private getLootTable(block: Block) {
-    return `tendrock/leaves/${Identifier.getId(block.typeId).replace('_leaves', '')}`;
+    const lootTable = this.lootTableMap.get(block.typeId);
+    if (lootTable) return lootTable;
+    const [namespace, id] = block.typeId.split(':');
+    return `${namespace}/leaves/${id.replaceAll('_leaves', '').replaceAll('leaves_', '')}`;
   }
 
   private isPersistent(block: Block) {

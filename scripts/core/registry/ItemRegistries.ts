@@ -2,7 +2,7 @@ import {BucketRegistry} from "./BucketRegistry";
 import {IpcV1} from "@tendrock/ipc";
 
 export class ItemRegistries {
-  bucket: BucketRegistry
+  bucket: BucketRegistry;
 
   protected constructor(ipc: IpcV1) {
     this.bucket = BucketRegistry.create(ipc);

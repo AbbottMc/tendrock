@@ -10,9 +10,6 @@ export interface BucketRegisterConfig extends PropertyObject {
     fillSoundId?: string;
 }
 export declare class BucketRegistry extends AbstractBucketRegistry {
-    private _ipc;
-    protected constructor(ipc: IpcV1);
     static create(ipc: IpcV1): BucketRegistry;
     register(config: BucketRegisterConfig): void;
-    getFluidType(fullBucketTypeId: string): import("@minecraft/server").FluidType;
 }

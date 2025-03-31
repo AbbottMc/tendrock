@@ -1,9 +1,10 @@
 import {SetMap} from "@tendrock/lib";
 import {FluidType, ItemStack} from "@minecraft/server";
-import {BucketRegisterConfig} from "../../core/registry/BucketRegistry";
 import {MinecraftBlockTypes, MinecraftItemTypes} from "@minecraft/vanilla-data";
+import {AbstractRegistry} from "../../core/registry/AbstractRegistry";
+import {BucketRegisterConfig} from "../../core/registry/BucketRegistry";
 
-export class AbstractBucketRegistry {
+export class AbstractBucketRegistry extends AbstractRegistry<BucketRegisterConfig> {
   protected fullBucketToEmptyMap = new Map<string, string>();
   protected fullBucketToFluidMap = new Map<string, string>();
   protected emptyBucketToFullMap = new Map<string, Map<string, string>>();
@@ -16,7 +17,6 @@ export class AbstractBucketRegistry {
     [MinecraftItemTypes.WaterBucket, FluidType.Water],
     [MinecraftItemTypes.PowderSnowBucket, FluidType.PowderSnow]
   ]);
-
 
   protected isEmptyBucket(itemStack: ItemStack) {
     return this.emptyBucketToFullMap.has(itemStack.typeId);
@@ -32,6 +32,7 @@ export class AbstractBucketRegistry {
   }
 
   public register(config: BucketRegisterConfig) {
+    super.register(config);
     this.fullBucketToEmptyMap.set(config.fullBucketId, config.emptyBucketId);
     this.fullBucketToFluidMap.set(config.fullBucketId, config.flowingLiquidBlockId);
     this.fullBucketEmptySoundIdMap.set(config.fullBucketId, config.emptySoundId);
@@ -52,6 +53,10 @@ export class AbstractBucketRegistry {
 
   getEmptyBucketId(fullBucketId: string) {
     return this.fullBucketToEmptyMap.get(fullBucketId);
+  }
+
+  getFluidType(fullBucketTypeId: string) {
+    return this.fullBucketToFluidType.get(fullBucketTypeId);
   }
 
   private addToMapEle(map: Map<string, Map<string, string>>, key: string, subKey: string, ele: string) {

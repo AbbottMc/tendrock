@@ -1,12 +1,11 @@
 {
   "name": "@tendrock/core",
-  "version": "0.1.0-alpha.4",
+  "version": "0.2.0-alpha.1",
   "main": "dist/core/index.js",
   "description": "The core package of the Tendrock system for Minecraft Bedrock Script API",
   "scripts": {
     "tsc-core": "tsc",
-    "publish-alpha": "npm publish --access public --tag alpha",
-    "mark-latest": "npm dist-tag add @tendrock/core@0.1.0-alpha.4 latest"
+    "publish-core-alpha-latest": "npm publish --access public --tag latest"
   },
   "files": [
     "dist",

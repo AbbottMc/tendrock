@@ -1,7 +1,8 @@
 import { SetMap } from "@tendrock/lib";
 import { FluidType, ItemStack } from "@minecraft/server";
+import { AbstractRegistry } from "../../core/registry/AbstractRegistry";
 import { BucketRegisterConfig } from "../../core/registry/BucketRegistry";
-export declare class AbstractBucketRegistry {
+export declare class AbstractBucketRegistry extends AbstractRegistry<BucketRegisterConfig> {
     protected fullBucketToEmptyMap: Map<string, string>;
     protected fullBucketToFluidMap: Map<string, string>;
     protected emptyBucketToFullMap: Map<string, Map<string, string>>;
@@ -14,5 +15,6 @@ export declare class AbstractBucketRegistry {
     protected isBucket(itemStack: ItemStack): boolean;
     register(config: BucketRegisterConfig): void;
     getEmptyBucketId(fullBucketId: string): string;
+    getFluidType(fullBucketTypeId: string): FluidType;
     private addToMapEle;
 }

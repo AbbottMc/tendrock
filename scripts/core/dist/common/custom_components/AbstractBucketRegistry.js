@@ -1,8 +1,10 @@
 import { SetMap } from "@tendrock/lib";
 import { FluidType } from "@minecraft/server";
 import { MinecraftBlockTypes, MinecraftItemTypes } from "@minecraft/vanilla-data";
-export class AbstractBucketRegistry {
+import { AbstractRegistry } from "../../core/registry/AbstractRegistry";
+export class AbstractBucketRegistry extends AbstractRegistry {
     constructor() {
+        super(...arguments);
         this.fullBucketToEmptyMap = new Map();
         this.fullBucketToFluidMap = new Map();
         this.emptyBucketToFullMap = new Map();
@@ -26,6 +28,7 @@ export class AbstractBucketRegistry {
         return this.fullBucketToFluidMap.has(itemStack.typeId) || this.emptyBucketToFullMap.has(itemStack.typeId);
     }
     register(config) {
+        super.register(config);
         this.fullBucketToEmptyMap.set(config.fullBucketId, config.emptyBucketId);
         this.fullBucketToFluidMap.set(config.fullBucketId, config.flowingLiquidBlockId);
         this.fullBucketEmptySoundIdMap.set(config.fullBucketId, config.emptySoundId);
@@ -46,6 +49,9 @@ export class AbstractBucketRegistry {
     }
     getEmptyBucketId(fullBucketId) {
         return this.fullBucketToEmptyMap.get(fullBucketId);
+    }
+    getFluidType(fullBucketTypeId) {
+        return this.fullBucketToFluidType.get(fullBucketTypeId);
     }
     addToMapEle(map, key, subKey, ele) {
         var _a;
