@@ -1,6 +1,6 @@
 {
   "name": "@tendrock/core",
-  "version": "0.3.0-alpha.1.21.70-stable.0",
+  "version": "0.3.0-alpha.1.21.70-stable.1",
   "main": "dist/core/index.js",
   "description": "The core package of the Tendrock system for Minecraft Bedrock Script API",
   "scripts": {
@@ -24,7 +24,7 @@
   "types": "types/generated/core",
   "author": "QianShanyao",
   "license": "MIT",
-  "dependencies": {
-    "@tendrock/ipc": "^0.2.0-alpha.3"
+  "peerDependencies": {
+    "@tendrock/ipc": "^0.3.0-alpha.1.21.70-stable.1"
   }
 }

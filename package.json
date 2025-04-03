@@ -50,7 +50,7 @@
     "webpack-cli": "^4.9.2"
   },
   "dependencies": {
-    "@tendrock/ipc": "^0.2.0-alpha.3",
+    "@tendrock/ipc": "^0.3.0-alpha.1.21.70-stable.1",
     "@tendrock/lib": "^0.2.0-alpha.0",
     "@tendrock/vanilla-data": "^0.1.0-alpha.1.21.70-stable.2"
   }
