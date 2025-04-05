@@ -1,5 +1,5 @@
 {
-  "format_version": "1.21.50",
+  "format_version": "1.21.80",
   "minecraft:item": {
     "description": {
       "identifier": "tendrock:empty_bucket",
@@ -9,7 +9,7 @@
     },
     "components": {
       "minecraft:icon": "tendrock:empty_bucket",
-      "minecraft:custom_components": ["tendrock:bucket"]
+      "tendrock:bucket": {}
     }
   }
 }

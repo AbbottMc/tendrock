@@ -10,9 +10,9 @@ import {AbstractBucketConfigurator} from "../../../../common/custom_components/A
 import {DirectionUtils, EntityUtils, PlayerUtils, serverWorld, TendrockVector3} from "@tendrock/lib";
 
 
-export class BucketComponent extends AbstractBucketConfigurator implements ItemCustomComponent {
+export class BucketItemComponent extends AbstractBucketConfigurator implements ItemCustomComponent {
   public static Id = 'tendrock:bucket';
-  public static Instance = new BucketComponent();
+  public static Instance = new BucketItemComponent();
 
   constructor() {
     super();

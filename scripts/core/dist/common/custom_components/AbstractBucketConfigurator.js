@@ -60,4 +60,3 @@ export class AbstractBucketConfigurator extends AbstractConfigurator {
         map.set(key, list);
     }
 }
-//# sourceMappingURL=AbstractBucketConfigurator.js.map

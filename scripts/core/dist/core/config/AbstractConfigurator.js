@@ -11,4 +11,3 @@ export class AbstractConfigurator {
     config(config) {
     }
 }
-//# sourceMappingURL=AbstractConfigurator.js.map

@@ -7,4 +7,3 @@ export class ItemConfigurators {
         return new ItemConfigurators(ipc);
     }
 }
-//# sourceMappingURL=ItemConfigurators.js.map

@@ -1,5 +1,5 @@
 {
-  "format_version": "1.21.50",
+  "format_version": "1.21.80",
   "minecraft:block": {
     "description": {
       "identifier": "tendrock:test_leaves",
@@ -9,7 +9,7 @@
       },
       "menu_category": {
         "category": "nature",
-        "group": "itemGroup.name.leaves"
+        "group": "minecraft:itemGroup.name.leaves"
       }
     },
     "components": {
@@ -32,11 +32,11 @@
         }
       },
       "minecraft:geometry": "minecraft:geometry.full_block",
-      "minecraft:custom_components": ["tendrock:leaves_block"],
       "minecraft:tick": {
         "looping": true,
         "interval_range": [1, 1]
       },
+      "tendrock:leaves": {},
       "tag:minecraft:leaves": {}
     }
   }

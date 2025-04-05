@@ -4,4 +4,3 @@ export class IdRefs {
         return Tendrock.getIdentifier(id);
     }
 }
-//# sourceMappingURL=IdRefs.js.map

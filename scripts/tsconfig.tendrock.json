@@ -6,7 +6,7 @@
     "experimentalDecorators": true,
     "module": "esnext",
     "target": "es6",
-    "sourceMap": true,
+    "sourceMap": false,
     "declaration": true,
     "incremental": false,
     "lib": [

@@ -8,4 +8,3 @@ export class BucketConfigurator extends AbstractBucketConfigurator {
         this._ipc.send('tendrock:register_bucket', config, 'tendrock');
     }
 }
-//# sourceMappingURL=BucketConfigurator.js.map

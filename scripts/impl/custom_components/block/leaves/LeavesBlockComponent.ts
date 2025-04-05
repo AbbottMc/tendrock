@@ -8,23 +8,17 @@ import {LeavesStates} from "./ref/LeavesStates";
 import {MinecraftBlockTypes} from "@minecraft/vanilla-data";
 import {Weather} from "../../../lib/world/Weather";
 import {LocationUtils} from "../../../lib/util/LocationUtils";
-import {Tendrock} from "../../../../common/Tendrock";
-import {LeavesConfigure} from "../../../../core/config/block/LeavesConfigurator";
+import {CustomComponentParams} from "../../../../common/types/tendrock";
+
+export interface LeavesComponentParameters {
+  loot: string;
+}
 
 export class LeavesBlockComponent implements BlockCustomComponent {
-  public static Id = 'tendrock:leaves_block';
+  public static Id = 'tendrock:leaves';
   public static Instance = new LeavesBlockComponent();
 
   private static MaxDistance = 7;
-
-  private lootTableMap = new Map<string, string>();
-
-  constructor() {
-    Tendrock.Ipc.on('tendrock:register_leaves', (event) => {
-      const config = event.value as LeavesConfigure;
-      this.lootTableMap.set(config.typeId, config.lootTable);
-    });
-  }
 
   @bindThis
   beforeOnPlayerPlace(event: BlockComponentPlayerPlaceBeforeEvent) {
@@ -33,9 +27,9 @@ export class LeavesBlockComponent implements BlockCustomComponent {
   }
 
   @bindThis
-  onRandomTick(event: BlockComponentRandomTickEvent) {
+  onRandomTick(event: BlockComponentRandomTickEvent, {params}: CustomComponentParams<LeavesComponentParameters>) {
     const {block, dimension} = event;
-    this.executeDecay(block, dimension);
+    this.executeDecay(block, dimension, params);
     this.spawnParticleWhenItRains(event.block, event.dimension);
   }
 
@@ -52,10 +46,9 @@ export class LeavesBlockComponent implements BlockCustomComponent {
     event.block.setPermutation(LeavesBlockComponent.updateDistanceFromLogs(event.block));
   }
 
-  private executeDecay(block: Block, dimension: Dimension) {
+  private executeDecay(block: Block, dimension: Dimension, params: LeavesComponentParameters) {
     if (LeavesBlockComponent.shouldDecay(block)) {
-      world.sendMessage('decay!');
-      const lootTable = this.getLootTable(block);
+      const lootTable = this.getLootTable(block, params);
       // loot spawn ~ ~ ~ loot "tendrock/leaves/test"
       const commandStr = `loot spawn ${block.location.x} ${block.location.y} ${block.location.z} loot "${lootTable}"`;
 
@@ -81,9 +74,9 @@ export class LeavesBlockComponent implements BlockCustomComponent {
     dimension.spawnParticle('minecraft:water_drip_particle', LocationUtils.randomXZIn(block.location));
   }
 
-  private getLootTable(block: Block) {
-    const lootTable = this.lootTableMap.get(block.typeId);
-    if (lootTable) return lootTable;
+  private getLootTable(block: Block, params: LeavesComponentParameters) {
+    const {loot} = params;
+    if (loot) return loot;
     const [namespace, id] = block.typeId.split(':');
     return `${namespace}/leaves/${id.replaceAll('_leaves', '').replaceAll('leaves_', '')}`;
   }
